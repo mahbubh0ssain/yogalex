@@ -1,9 +1,16 @@
-import Products from "./products";
+import Classes from "../Components/Classes/Classes";
+import Header from "../Components/Header/Header";
+import Lifestyle from "../Components/Lifestyle/Lifestyle";
+import WhyShould from "../Components/WhyShould/WhyShould";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
-      <Products />
+      <Header />
+      <WhyShould />
+      <Lifestyle />
+      <Classes />
     </div>
   );
-}
+};
+export default Home;
