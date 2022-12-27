@@ -12,13 +12,13 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <a to="/">Home</a>
+        <Link href="/">Home</Link>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <a to="/blogs">Classes</a>
+        <Link href="/navigation/classes">Classes</Link>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <a to="/dashboard">Schedule</a>
+        <Link href="/navigation/schedule">Schedule</Link>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
         <a to="/dashboard">About</a>
@@ -28,6 +28,9 @@ const Navbar = () => {
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
         <a to="/dashboard">Contact</a>
+      </li>
+      <li className="hover:border-b-2 text-black hover:text-white">
+        <Link href="/navigation/login">Login</Link>
       </li>
       {/* {user?.email ? (
         <li>
@@ -47,8 +50,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="mb-6 shadow-sm">
-      <div className="navbar max-w-[1440px] mx-auto">
+    <div className="mb-6 shadow-sm static">
+      <div className="navbar max-w-[1440px] mx-auto static">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="cursor-pointer lg:hidden">

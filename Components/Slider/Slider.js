@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import CountUp from "react-countup";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -50,7 +50,10 @@ const Slider = () => {
   ];
 
   return (
-    <div className="mySwiper max-w-[1440px] mx-auto px-3">
+    <div className="mySwiper max-w-[1440px] mx-auto px-3 py-12">
+      <h1 className="text-center text-black text-5xl pb-6 ">
+        Successful Stories
+      </h1>
       <Swiper
         breakpoints={{
           576: {
@@ -84,34 +87,8 @@ const Slider = () => {
             </div>
           </SwiperSlide>
         ))}
-
-        {/*         
-        <SwiperSlide className="text-black">
-          Monotonectally transition clicks-and-mortar platforms without
-          impactful e-services. Quickly unleash prospective interfaces without
-          reliable markets. Distinctively.
-        </SwiperSlide>
-        <SwiperSlide className="text-black">
-          Monotonectally transition clicks-and-mortar platforms without
-          impactful e-services. Quickly unleash prospective interfaces without
-          reliable markets. Distinctively.
-        </SwiperSlide>
-        <SwiperSlide className="text-black">
-          Monotonectally transition clicks-and-mortar platforms without
-          impactful e-services. Quickly unleash prospective interfaces without
-          reliable markets. Distinctively.
-        </SwiperSlide>
-        <SwiperSlide className="text-black">
-          Monotonectally transition clicks-and-mortar platforms without
-          impactful e-services. Quickly unleash prospective interfaces without
-          reliable markets. Distinctively.
-        </SwiperSlide>
-        <SwiperSlide className="text-black">
-          Monotonectally transition clicks-and-mortar platforms without
-          impactful e-services. Quickly unleash prospective interfaces without
-          reliable markets. Distinctively.
-        </SwiperSlide> */}
       </Swiper>
+      {/* <CountUp className="text-black text-7xl" end={100} /> */}
     </div>
   );
 };
