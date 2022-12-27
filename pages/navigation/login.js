@@ -1,11 +1,25 @@
+import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Authprovider";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    login(email, password)
+      .then((res) => {
+        if (res?.user?.email) {
+          form.reset();
+          
+        }
+      })
+      .then((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="hero my-5">
@@ -26,7 +40,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered text-black"
               />
             </div>
             <div className="form-control">
@@ -37,7 +51,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered text-black"
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">

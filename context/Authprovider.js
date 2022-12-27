@@ -27,9 +27,8 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     return signOut(auth);
-    localStorage.removeItem("token");
   };
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

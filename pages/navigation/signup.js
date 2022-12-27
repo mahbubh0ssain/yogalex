@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { AuthContext } from "../../context/Authprovider";
 
 const Signup = () => {
+  const router = useRouter();
   const { createUser } = useContext(AuthContext);
   const handleSignup = (e) => {
     e.preventDefault();
@@ -13,6 +15,7 @@ const Signup = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+        router.push("/");
       })
       .then((err) => {
         console.log(err);

@@ -1,11 +1,16 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Authprovider";
 
 const Navbar = () => {
-  const logOut = () => {
-    logOutUser()
-      .then(() => {
-        toast.success("Logout successful.");
-      })
+  const { user, logOut } = useContext(AuthContext);
+
+  
+
+  
+  const logOutUser = () => {
+    logOut()
+      .then(() => {})
       .catch(() => {});
   };
 
@@ -29,23 +34,15 @@ const Navbar = () => {
       <li className="hover:border-b-2 text-black hover:text-white">
         <a to="/dashboard">Contact</a>
       </li>
-      <li className="hover:border-b-2 text-black hover:text-white">
-        <Link href="/navigation/login">Login</Link>
-      </li>
-      {/* {user?.email ? (
-        <li>
-          <button onClick={logOut}>
-            <img
-              className="img-fluid"
-              style={{ width: "28px" }}
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_logOut-ltr.svg/2048px-OOjs_UI_icon_logOut-ltr.svg.png"
-              alt=""
-            />
-          </button>
+      {user?.email ? (
+        <li className="hover:border-b-2 text-black hover:text-white">
+          <button onClick={logOutUser}>Logout</button>
         </li>
       ) : (
-        <li className="hover:border-b-2 text-black hover:text-white"></li>
-      )} */}
+        <li className="hover:border-b-2 text-black hover:text-white">
+          <Link href="/navigation/login">Login</Link>
+        </li>
+      )}
     </>
   );
 
