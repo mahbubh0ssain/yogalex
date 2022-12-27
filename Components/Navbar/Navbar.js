@@ -4,10 +4,6 @@ import { AuthContext } from "../../context/Authprovider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
-  
-
-  
   const logOutUser = () => {
     logOut()
       .then(() => {})
@@ -20,16 +16,13 @@ const Navbar = () => {
         <Link href="/">Home</Link>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <Link href="/navigation/classes">Classes</Link>
-      </li>
-      <li className="hover:border-b-2 text-black hover:text-white">
         <Link href="/navigation/schedule">Schedule</Link>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <a to="/dashboard">About</a>
+        <a to="/dashboard">Blog</a>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <a to="/dashboard">Blog</a>
+        <a to="/dashboard">About</a>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
         <a to="/dashboard">Contact</a>
