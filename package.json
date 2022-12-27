@@ -11,9 +11,11 @@
   "dependencies": {
     "@next/font": "13.1.0",
     "daisyui": "^2.46.0",
+    "firebase": "^9.15.0",
     "next": "13.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swiper": "^8.4.5",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
