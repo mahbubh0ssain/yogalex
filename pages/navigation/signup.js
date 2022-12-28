@@ -22,42 +22,34 @@ const Signup = () => {
       });
   };
   return (
-    <div className="hero my-5">
+    <div className="hero my-5 min-h-[67.5vh]">
       <div className="hero-content flex-col grid gap-20 grid-cols-1 ">
-        <div className=" w-full">
-          {/* <img className="mx-auto" src={loginImg} alt="" /> */}
-        </div>
         <div className="card shadow-2xl  h-full">
           <form onSubmit={handleSignup} className="card-body">
             <h1 className="text-5xl font-thin text-center text-black">
               Signup now!
             </h1>
             <div className="form-control">
-              <label className="label">
+              <label className="label pb-0">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="example@gmail.com"
                 className="input input-bordered text-black"
               />
             </div>
             <div className="form-control">
-              <label className="label">
+              <label className="label pb-0">
                 <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="*****"
                 className="input input-bordered text-black"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
               <input
@@ -67,12 +59,9 @@ const Signup = () => {
               ></input>
             </div>
           </form>
-          <p className="text-center text-black">
-            Already registered?
-            <Link
-              href="/navigation/login"
-              className="text-orange-700 font-bold"
-            >
+          <p className="text-center text-black mb-4">
+            Already registered? {}
+            <Link href="/navigation/login" className="text-cyan-500 font-bold">
               Login
             </Link>
           </p>
