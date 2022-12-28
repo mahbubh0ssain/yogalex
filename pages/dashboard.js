@@ -21,16 +21,14 @@ const Dashboard = () => {
     return <p className="text-black text-5xl text-center">Loading...</p>;
   }
   return (
-    booking && (
-      <div className="max-w-[1440px] mx-auto px-4">
+    <>
+      booking && (
+      <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
         <h1 className="text-black text-4xl text-center">
           Welcome <span className="text-cyan-500">{user?.email}</span>
         </h1>
-        <h4 className="text-black text-center text-xl my-6">
-          Your Bookings {booking.length}
-        </h4>
 
-        <div className="overflow-x-auto text-black">
+        <div className="overflow-x-auto text-black mt-5">
           <table className="table w-full">
             <thead>
               <tr>
@@ -53,7 +51,8 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-    )
+      ){!booking && <p className="text-black">No booking</p>}
+    </>
   );
 };
 
