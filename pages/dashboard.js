@@ -15,7 +15,7 @@ const Dashboard = () => {
         setBooking(res?.data);
         setLoading(false);
       });
-  }, [user?.email]);
+  }, [user?.email, loading]);
 
   if (loading) {
     return <p className="text-black text-5xl text-center">Loading...</p>;
@@ -30,9 +30,28 @@ const Dashboard = () => {
           Your Bookings {booking.length}
         </h4>
 
-        {booking?.map((info) => (
-          <Bookings key={info._id} info={info}></Bookings>
-        ))}
+        <div className="overflow-x-auto text-black">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Slot</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {booking?.map((info) => (
+                <Bookings
+                  key={info._id}
+                  setLoading={setLoading}
+                  loading={loading}
+                  info={info}
+                ></Bookings>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   );
