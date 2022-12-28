@@ -23,8 +23,8 @@ const Signup = () => {
   };
   return (
     <div className="hero my-5 min-h-[67.5vh]">
-      <div className="hero-content flex-col grid gap-20 grid-cols-1 ">
-        <div className="card shadow-2xl  h-full">
+      <div className="flex-col grid gap-20 grid-cols-1 max-w-[576px] mx-4">
+        <div className="card shadow-2xl h-full">
           <form onSubmit={handleSignup} className="card-body">
             <h1 className="text-5xl font-thin text-center text-black">
               Signup now!

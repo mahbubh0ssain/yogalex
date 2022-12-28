@@ -1,7 +1,7 @@
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import { useContext } from "react";
-import { AuthContext } from "../../context/Authprovider";
+import { AuthContext } from "../context/Authprovider";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -22,7 +22,7 @@ const Login = () => {
   };
   return (
     <div className="hero my-5 min-h-[67.5vh]">
-      <div className="hero-content max-w-[576px] flex-col grid grid-cols-1">
+      <div className="hero-content max-w-[576px] flex-col grid grid-cols-1 mx-4">
         <div className="card shadow-2xl  h-full">
           <form onSubmit={handleLogin} className="card-body">
             <h1 className="text-5xl font-thin text-center text-black">

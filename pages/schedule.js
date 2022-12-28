@@ -8,6 +8,7 @@ const Schedule = ({ data }) => {
       <h1 className="text-black text-6xl text-center">
         This is schedule component
       </h1>
+
       {data?.map((info) => (
         <div
           onClick={() => setSlot(info?.time)}
@@ -17,6 +18,7 @@ const Schedule = ({ data }) => {
           {info?.time}
         </div>
       ))}
+
       <input
         defaultValue={slot}
         readOnly
@@ -31,7 +33,7 @@ const Schedule = ({ data }) => {
 
 export default Schedule;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:5000/bookings");
   const bookings = await res.json();
   return {
