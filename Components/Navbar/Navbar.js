@@ -25,7 +25,7 @@ const Navbar = () => {
         <a to="/dashboard">About</a>
       </li>
       <li className="hover:border-b-2 text-black hover:text-white">
-        <Link href="/contact">Contact</Link>
+        <Link href="/dashboard">Dashboard</Link>
       </li>
       {user?.email ? (
         <li className="hover:border-b-2 text-black hover:text-white">
