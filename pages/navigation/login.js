@@ -14,7 +14,6 @@ const Login = () => {
       .then((res) => {
         if (res?.user?.email) {
           form.reset();
-          
         }
       })
       .then((err) => {
@@ -22,38 +21,36 @@ const Login = () => {
       });
   };
   return (
-    <div className="hero my-5">
-      <div className="hero-content flex-col grid gap-20 grid-cols-1 ">
-        <div className=" w-full">
-          {/* <img className="mx-auto" src={loginImg} alt="" /> */}
-        </div>
+    <div className="hero my-5 min-h-[67.5vh]">
+      <div className="hero-content max-w-[576px] flex-col grid grid-cols-1 ">
+        <div className="w-full"></div>
         <div className="card shadow-2xl  h-full">
           <form onSubmit={handleLogin} className="card-body">
             <h1 className="text-5xl font-thin text-center text-black">
               Login now!
             </h1>
             <div className="form-control">
-              <label className="label">
+              <label className="label  pb-0">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="example@gmail.com"
                 className="input input-bordered text-black"
               />
             </div>
             <div className="form-control">
-              <label className="label">
+              <label className="label  pb-0">
                 <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="******"
                 className="input input-bordered text-black"
               />
-              <label className="label">
+              <label className="label  pb-0">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
@@ -67,12 +64,9 @@ const Login = () => {
               ></input>
             </div>
           </form>
-          <p className="text-center text-black">
-            New to Genius Car?
-            <Link
-              href="/navigation/signup"
-              className="text-orange-700 font-bold"
-            >
+          <p className="text-center text-black mb-4">
+            New to Yogalax? {}
+            <Link href="/navigation/signup" className="text-cyan-400 font-bold">
               Signup
             </Link>
           </p>
