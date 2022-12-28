@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.0",
+    "axios": "^1.2.1",
     "daisyui": "^2.46.0",
     "firebase": "^9.15.0",
     "next": "13.1.0",
