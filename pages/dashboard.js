@@ -1,9 +1,11 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Bookings from "../Components/Bookings/Bookings";
 import { AuthContext } from "../context/Authprovider";
 
 const Dashboard = () => {
+  const router = useRouter();
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +21,9 @@ const Dashboard = () => {
 
   if (loading) {
     return <p className="text-black text-5xl text-center">Loading...</p>;
+  }
+  if (!user) {
+    router.push("/login");
   }
   return (
     <>

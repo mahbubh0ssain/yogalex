@@ -1,5 +1,6 @@
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import Router from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../context/Authprovider";
 
@@ -14,6 +15,7 @@ const Login = () => {
       .then((res) => {
         if (res?.user?.email) {
           form.reset();
+          Router.back();
         }
       })
       .then((err) => {

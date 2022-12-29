@@ -1,11 +1,12 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/Authprovider";
 
 const Schedule = ({ data }) => {
   const { user } = useContext(AuthContext);
   const [slot, setSlot] = useState("");
-
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,6 +23,11 @@ const Schedule = ({ data }) => {
       }
     });
   };
+
+  if (!user) {
+    router.push("/login");
+  }
+
   return (
     <div className="max-w-[1440px] mx-auto px-4">
       <h1 className="text-black text-5xl text-center mb-4">
