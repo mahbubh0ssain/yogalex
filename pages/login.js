@@ -2,7 +2,7 @@ import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import Router from "next/router";
 import { useContext } from "react";
-import { AuthContext } from "../context/Authprovider";
+import { AuthContext } from "../pages/context/Authprovider";
 
 const Login = () => {
   const { login } = useContext(AuthContext);

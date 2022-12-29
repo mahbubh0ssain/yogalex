@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Bookings from "../Components/Bookings/Bookings";
-import { AuthContext } from "../context/Authprovider";
+import { AuthContext } from "../pages/context/Authprovider";
 
 const Dashboard = () => {
   const router = useRouter();

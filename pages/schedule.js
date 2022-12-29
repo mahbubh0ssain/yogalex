@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/Authprovider";
+import { AuthContext } from "../pages/context/Authprovider";
 
 const Schedule = ({ data }) => {
   const { user } = useContext(AuthContext);
