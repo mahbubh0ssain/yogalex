@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext } from "react";
-import { AuthContext } from "../pages/context/Authprovider";
+import { AuthContext } from "../../pages/context/Authprovider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
