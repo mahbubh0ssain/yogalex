@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Schedule = ({ data }) => {
@@ -24,9 +24,13 @@ const Schedule = ({ data }) => {
     });
   };
 
-  if (!user) {
-    router.push("/login");
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!user) {
+        router.push("/login");
+      }
+    }
+  }, []);
 
   return (
     <div className="max-w-[1440px] mx-auto px-4">

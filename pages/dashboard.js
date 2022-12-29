@@ -22,9 +22,11 @@ const Dashboard = () => {
   if (loading) {
     return <p className="text-black text-5xl text-center">Loading...</p>;
   }
+
   if (!user) {
     router.push("/login");
   }
+
   return (
     <>
       booking && (
