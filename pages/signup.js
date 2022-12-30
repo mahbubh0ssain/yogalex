@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import { AuthContext } from "../pages/context/Authprovider";
+import { useToken } from "../AuthToken/UseToken";
 
 const Signup = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const Signup = () => {
     console.log(email, password);
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        useToken(res?.user?.email);
         router.push("/");
       })
       .then((err) => {

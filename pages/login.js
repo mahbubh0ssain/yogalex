@@ -2,6 +2,7 @@ import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import Router from "next/router";
 import { useContext } from "react";
+import { useToken } from "../AuthToken/UseToken";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         if (res?.user?.email) {
+          useToken(res?.user?.email);
           form.reset();
           Router.back();
         }
