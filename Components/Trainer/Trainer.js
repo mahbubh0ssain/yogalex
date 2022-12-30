@@ -6,7 +6,9 @@ const Trainer = ({ trainer }) => {
           <img src={trainer?.img} className="h-64 w-full" alt="Shoes" />
         </figure>
         <div className="card-body">
-          <div className="text-xl">{trainer.name}</div>
+          <span className="text-xl badge badge-primary py-4 ">
+            {trainer.name}
+          </span>
         </div>
         <button className="btn btn-primary mx-4 mb-4">Details</button>
       </div>

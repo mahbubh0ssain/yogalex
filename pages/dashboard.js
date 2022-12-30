@@ -29,7 +29,6 @@ const Dashboard = () => {
 
   return (
     <>
-      booking && (
       <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
         <h1 className="text-black text-4xl text-center">
           Welcome <span className="text-cyan-500">{user?.email}</span>
@@ -58,7 +57,6 @@ const Dashboard = () => {
           </table>
         </div>
       </div>
-      ){!booking && <p className="text-black">No booking</p>}
     </>
   );
 };
