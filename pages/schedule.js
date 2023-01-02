@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Schedule = ({ data }) => {
-  console.log(data);
+  console.log(data?.data);
   const { user } = useContext(AuthContext);
   const [slot, setSlot] = useState("");
   const router = useRouter();
