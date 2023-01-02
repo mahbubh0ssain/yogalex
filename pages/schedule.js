@@ -134,7 +134,7 @@ export const getServerSideProps = async () => {
   const bookings = await res.json();
   return {
     props: {
-      data: bookings.data,
+      data: bookings?.data,
     },
   };
 };
