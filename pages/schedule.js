@@ -130,7 +130,7 @@ const Schedule = ({ bookings }) => {
 export default Schedule;
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`);
+  const res = await fetch(`https://yogalex-server.vercel.app/bookings`);
   const bookings = await res.json();
   return {
     props: {
