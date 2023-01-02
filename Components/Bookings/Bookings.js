@@ -4,7 +4,7 @@ const Bookings = ({ info, setLoading, loading }) => {
   const { date, slot, email, _id } = info;
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:5000/deletebooking?id=${_id}`)
+      .delete(`${process.env.NEXT_PUBLIC_URL}/deletebooking?id=${_id}`)
       .then((res) => {
         console.log(res?.data);
         setLoading(!loading);

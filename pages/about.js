@@ -16,8 +16,7 @@ const About = ({ trainers }) => {
 
 export default About;
 export const getServerSideProps = async () => {
-  router.replace("/thankyou");
-  const res = await fetch("http://localhost:5000/trainer");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/trainer`);
   const trainers = await res.json();
   return {
     props: {

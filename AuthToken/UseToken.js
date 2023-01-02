@@ -1,6 +1,6 @@
 import axios from "axios";
 export const useToken = (email) => {
-  axios.post(`http://localhost:5000/jwt/${email}`).then((res) => {
+  axios.post(`${process.env.NEXT_PUBLIC_URL}/jwt/${email}`).then((res) => {
     localStorage.setItem("token", res.data);
   });
 };

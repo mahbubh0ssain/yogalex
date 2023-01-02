@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
+      .get(`${process.env.NEXT_PUBLIC_URL}/bookedInfo?email=${user?.email}`)
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);

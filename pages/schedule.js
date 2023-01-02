@@ -15,13 +15,15 @@ const Schedule = ({ data }) => {
     const email = form.email.value;
     const number = form.number.value;
     const bookingInfo = { date, slot, email, number };
-    axios.post("http://localhost:5000/booked", bookingInfo).then((res) => {
-      if (res?.data?.data?.acknowledged) {
-        form.reset();
-        setSlot("");
-        alert("Successfully booked");
-      }
-    });
+    axios
+      .post(`${process.env.NEXT_PUBLIC_URL}/booked`, bookingInfo)
+      .then((res) => {
+        if (res?.data?.data?.acknowledged) {
+          form.reset();
+          setSlot("");
+          alert("Successfully booked");
+        }
+      });
   };
 
   useEffect(() => {
@@ -127,7 +129,7 @@ const Schedule = ({ data }) => {
 export default Schedule;
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:5000/bookings");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/bookings`);
   const bookings = await res.json();
   return {
     props: {
