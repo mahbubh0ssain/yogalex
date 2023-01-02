@@ -1,4 +1,3 @@
-import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import Router from "next/router";
 import { useContext } from "react";
@@ -21,7 +20,7 @@ const Login = () => {
         }
       })
       .then((err) => {
-        console.log(err);
+        console.log(err?.message);
       });
   };
   return (
