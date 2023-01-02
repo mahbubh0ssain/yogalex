@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../pages/context/Authprovider";
 
-const Schedule = ({ data }) => {
-  console.log(data);
+const Schedule = ({ bookings }) => {
+  console.log(bookings);
   // const { user } = useContext(AuthContext);
   // const [slot, setSlot] = useState("");
   // const router = useRouter();
@@ -134,7 +134,8 @@ export const getServerSideProps = async () => {
   const bookings = await res.json();
   return {
     props: {
-      data: bookings?.data,
+      // data: bookings?.data,
+      bookings,
     },
   };
 };
