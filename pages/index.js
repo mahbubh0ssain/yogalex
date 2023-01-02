@@ -7,6 +7,8 @@ import Slider from "../Components/Slider/Slider";
 import WhyShould from "../Components/WhyShould/WhyShould";
 
 const Home = () => {
+  const vdk = process.env.NEXT_PUBLIC_URL;
+  console.log("eibar paissi", vdk);
   return (
     <div>
       <Header />
