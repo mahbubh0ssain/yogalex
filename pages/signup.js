@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { useContext } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { AuthContext } from "../pages/context/Authprovider";
 import { useToken } from "../AuthToken/UseToken";
 
 const Signup = () => {
   const router = useRouter();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logInWithGoogle } = useContext(AuthContext);
   const handleSignup = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +19,19 @@ const Signup = () => {
         router.push("/");
       })
       .then((err) => {
+        console.log(err);
+      });
+  };
+
+  const continueWithGoogle = () => {
+    logInWithGoogle()
+      .then((res) => {
+        if (res?.user?.email) {
+          Router.back();
+        }
+        console.log(res.user);
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -69,7 +82,7 @@ const Signup = () => {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="divider">OR</div>
             <div className="grid card rounded-box place-items-center">
-              <div className="btn mb-5">
+              <div onClick={continueWithGoogle} className="btn mb-5">
                 <img
                   className="w-6 mr-3"
                   src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"

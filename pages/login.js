@@ -5,7 +5,7 @@ import { useToken } from "../AuthToken/UseToken";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, logInWithGoogle } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +23,20 @@ const Login = () => {
         console.log(err?.message);
       });
   };
+
+  const continueWithGoogle = () => {
+    logInWithGoogle()
+      .then((res) => {
+        if (res?.user?.email) {
+          Router.back();
+        }
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="hero my-5 min-h-[67.5vh]">
       <div className="hero-content max-w-[576px] flex-col grid grid-cols-1 mx-4">
@@ -75,7 +89,7 @@ const Login = () => {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="divider">OR</div>
             <div className="grid card rounded-box place-items-center">
-              <div className="btn mb-5">
+              <div onClick={continueWithGoogle} className="btn mb-5">
                 <img
                   className="w-6 mr-3"
                   src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
