@@ -14,7 +14,8 @@ const Schedule = ({ data }) => {
     const slot = form.slot.value;
     const email = form.email.value;
     const number = form.number.value;
-    const bookingInfo = { date, slot, email, number };
+    const bookingTime = new Date();
+    const bookingInfo = { date, slot, email, number, bookingTime };
     axios
       .post(`${process.env.NEXT_PUBLIC_BASE_URL}/booked`, bookingInfo)
       .then((res) => {
@@ -33,6 +34,10 @@ const Schedule = ({ data }) => {
       }
     }
   }, []);
+  
+  if (!data) {
+    return <h2 className="text-7xl text-black">Loading...</h2>;
+  }
 
   return (
     <div className="max-w-[1440px] mx-auto px-4">
