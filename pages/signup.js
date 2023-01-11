@@ -62,10 +62,23 @@ const Signup = () => {
           </form>
           <p className="text-center text-black mb-4">
             Already registered? {}
-            <Link href="/navigation/login" className="text-cyan-500 font-bold">
+            <Link href="/login" className="text-cyan-500 font-bold">
               Login
             </Link>
           </p>
+          <div className="flex flex-col w-full border-opacity-50">
+            <div className="divider">OR</div>
+            <div className="grid card rounded-box place-items-center">
+              <div className="btn mb-5">
+                <img
+                  className="w-6 mr-3"
+                  src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
+                  alt=""
+                />
+                Continue with Google
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

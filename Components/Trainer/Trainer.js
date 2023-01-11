@@ -3,7 +3,7 @@ const Trainer = ({ trainer }) => {
     <div>
       <div className="card w-96 bg-base-100 shadow-xl mx-auto">
         <figure>
-          <img src={trainer?.img} className="h-64 w-full" alt="Shoes" />
+          <img src={trainer?.imgUrl} className="h-64 w-full" alt="Shoes" />
         </figure>
         <div className="card-body">
           <span className="text-xl badge badge-primary py-4 ">
@@ -17,3 +17,4 @@ const Trainer = ({ trainer }) => {
 };
 
 export default Trainer;
+
