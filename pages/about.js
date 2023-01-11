@@ -1,7 +1,6 @@
 import Trainer from "../Components/Trainer/Trainer";
 
 const About = ({ trainers }) => {
-  console.log(trainers);
   return (
     <div className="max-w-[1440px] mx-auto px-4">
       <h1 className="text-5xl text-center my-6">Meet our instructors.</h1>

@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Schedule = ({ data }) => {
-  console.log(data?.data);
   const { user } = useContext(AuthContext);
   const [slot, setSlot] = useState("");
   const router = useRouter();
@@ -17,7 +16,7 @@ const Schedule = ({ data }) => {
     const number = form.number.value;
     const bookingInfo = { date, slot, email, number };
     axios
-      .post(`${process.env.NEXT_PUBLIC_URL}/booked`, bookingInfo)
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/booked`, bookingInfo)
       .then((res) => {
         if (res?.data?.data?.acknowledged) {
           form.reset();
@@ -135,7 +134,6 @@ export const getServerSideProps = async () => {
   return {
     props: {
       data: bookings?.data,
-      // bookings,
     },
   };
 };
