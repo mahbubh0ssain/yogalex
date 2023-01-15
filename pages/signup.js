@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Router, { useRouter } from "next/router";
 import { AuthContext } from "../pages/context/Authprovider";
 import { useToken } from "../AuthToken/UseToken";
+import axios from "axios";
 
 const Signup = () => {
   const router = useRouter();
@@ -12,11 +13,14 @@ const Signup = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     createUser(email, password)
-      .then((res) => {
-        useToken(res?.user?.email);
-        router.push("/");
+      .then(() => {
+        axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+          if (res.data.result.acknowledged) {
+            useToken(res?.user?.email);
+            router.push("/");
+          }
+        });
       })
       .then((err) => {
         console.log(err);
@@ -69,7 +73,7 @@ const Signup = () => {
               <input
                 type="submit"
                 className="btn btn-primary"
-                value="Login"
+                value="Signup"
               ></input>
             </div>
           </form>

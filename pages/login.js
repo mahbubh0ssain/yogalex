@@ -30,7 +30,6 @@ const Login = () => {
         if (res?.user?.email) {
           Router.back();
         }
-        console.log(res.user);
       })
       .catch((err) => {
         console.log(err);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Bookings from "../Components/Bookings/Bookings";
+import { getRole } from "../Components/getRole";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Dashboard = () => {
@@ -10,6 +11,8 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  const admin = getRole(user?.email);
 
   useEffect(() => {
     axios
@@ -50,28 +53,30 @@ const Dashboard = () => {
       </div>
 
       <div className="max-w-[1440px] mx-auto ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
-          <Link href="/addTrainer" className="text-4xl">
-            <div className="bg-primary p-3 flex gap-7 rounded-lg">
-              Add Trainer
-              <img
-                className="w-12"
-                src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
-                alt=""
-              />
-            </div>
-          </Link>
-          <Link href="/addBlog" className="text-4xl">
-            <div className="bg-primary p-3 flex gap-7 rounded-lg">
-              Add Blog
-              <img
-                className="w-12"
-                src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
-                alt=""
-              />
-            </div>
-          </Link>
-        </div>
+        {admin && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
+            <Link href="/addTrainer" className="text-4xl">
+              <div className="bg-primary p-3 flex gap-7 rounded-lg">
+                Add Trainer
+                <img
+                  className="w-12"
+                  src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
+                  alt=""
+                />
+              </div>
+            </Link>
+            <Link href="/addBlog" className="text-4xl">
+              <div className="bg-primary p-3 flex gap-7 rounded-lg">
+                Add Blog
+                <img
+                  className="w-12"
+                  src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
+                  alt=""
+                />
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
 
       {booking?.length ? (
