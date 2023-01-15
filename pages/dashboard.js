@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Bookings from "../Components/Bookings/Bookings";
-import { getRole } from "../Components/getRole";
+import { getRole, getUsers } from "../Components/getInfo/getInfo";
+import UserTable from "../Components/UserTable/UserTable";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Dashboard = () => {
@@ -11,8 +12,10 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const admin = getRole(user?.email);
+  const [users, loader, setLoader] = getUsers(user?.email);
+  console.log(users);
 
   useEffect(() => {
     axios
@@ -79,7 +82,38 @@ const Dashboard = () => {
         )}
       </div>
 
-      {booking?.length ? (
+      {admin && users?.length ? (
+        <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
+          <div className="overflow-x-auto text-black mt-5">
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users?.map((info) => (
+                  <UserTable
+                    key={info._id}
+                    setLoader={setLoader}
+                    loader={loader}
+                    info={info}
+                  ></UserTable>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        !users?.data?.length(
+          <h2 className="text-5xl flex items-center justify-center">
+            There are no users
+          </h2>
+        )
+      )}
+
+      {!admin && booking?.length ? (
         <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
           <div className="overflow-x-auto text-black mt-5">
             <table className="table w-full">
@@ -105,9 +139,11 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <h2 className="text-5xl flex items-center justify-center">
-          You have no order
-        </h2>
+        !admin && (
+          <h2 className="text-5xl flex items-center justify-center">
+            You have no order
+          </h2>
+        )
       )}
     </div>
   );
