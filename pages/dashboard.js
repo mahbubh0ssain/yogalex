@@ -15,6 +15,8 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  console.log(url, "bookedInfo");
 
   useEffect(() => {
     axios
