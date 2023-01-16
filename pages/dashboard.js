@@ -15,14 +15,10 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
-  console.log(url, "bookedInfo");
 
   useEffect(() => {
     axios
-      .get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/bookedInfo?email=${user?.email}`
-      )
+      .get(`https://yogalex-server.vercel.app/bookedInfo?email=${user?.email}`)
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);

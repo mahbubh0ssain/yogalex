@@ -6,7 +6,7 @@ const UserTable = ({ info, setLoader, loader }) => {
   const { email, _id } = info;
   const handleDelete = (_id) => {
     axios
-      .delete(`${process.env.NEXT_PUBLIC_BASE_URL}/deleteUser?id=${_id}`)
+      .delete(`https://yogalex-server.vercel.app/deleteUser?id=${_id}`)
       .then(() => {
         setLoader(!loader);
       });
