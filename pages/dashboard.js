@@ -24,6 +24,7 @@ const Dashboard = () => {
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);
+        console.log("loading changed from the useEffect hook");
       });
   }, [user?.email]);
 
