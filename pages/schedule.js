@@ -17,7 +17,7 @@ const Schedule = ({ data }) => {
     const bookingTime = new Date();
     const bookingInfo = { date, slot, email, number, bookingTime };
     axios
-      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/booked`, bookingInfo)
+      .post(`https://yogalex-server.vercel.app/booked`, bookingInfo)
       .then((res) => {
         if (res?.data?.data?.acknowledged) {
           form.reset();
@@ -34,7 +34,7 @@ const Schedule = ({ data }) => {
       }
     }
   }, []);
-  
+
   if (!data) {
     return <h2 className="text-7xl text-black">Loading...</h2>;
   }
