@@ -1,12 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../pages/context/Authprovider";
 
 const UserTable = ({ info, setLoader, loader }) => {
   const { email, _id } = info;
-  const handleDelete = () => {
+  const handleDelete = (_id) => {
     axios
       .delete(`${process.env.NEXT_PUBLIC_BASE_URL}/deleteUser?id=${_id}`)
-      .then((res) => {
+      .then(() => {
         setLoader(!loader);
       });
   };
@@ -15,7 +16,7 @@ const UserTable = ({ info, setLoader, loader }) => {
       <td>{email}</td>
       <td>
         <button
-          onClick={handleDelete}
+          onClick={() => handleDelete(_id)}
           className="btn btn-xs bg-red-500 border-0"
         >
           Delete

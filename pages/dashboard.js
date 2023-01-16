@@ -15,7 +15,6 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
-  console.log(users);
 
   useEffect(() => {
     axios
@@ -88,7 +87,7 @@ const Dashboard = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>Email</th>
+                  <th>User Email</th>
                   <th>Action</th>
                 </tr>
               </thead>
