@@ -15,6 +15,8 @@ const About = ({ trainers }) => {
 
 export default About;
 export const getServerSideProps = async () => {
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  console.log(url, "bookedInfo");
   const res = await fetch(`https://yogalex-server.vercel.app/trainer`);
   const trainers = await res.json();
   return {
