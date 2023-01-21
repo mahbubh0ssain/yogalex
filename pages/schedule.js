@@ -17,15 +17,13 @@ const Schedule = ({ data }) => {
     const number = form.number.value;
     const bookingTime = new Date();
     const bookingInfo = { date, slot, email, number, bookingTime };
-    axios
-      .post(`https://yogalex-server.vercel.app/booked`, bookingInfo)
-      .then((res) => {
-        if (res?.data?.data?.acknowledged) {
-          form.reset();
-          setSlot("");
-          Swal.fire("Session booked successfully.");
-        }
-      });
+    axios.post(`http://localhost:5000/booked`, bookingInfo).then((res) => {
+      if (res?.data?.data?.acknowledged) {
+        form.reset();
+        setSlot("");
+        Swal.fire("Session booked successfully.");
+      }
+    });
   };
 
   useEffect(() => {
@@ -135,7 +133,7 @@ const Schedule = ({ data }) => {
 export default Schedule;
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`https://yogalex-server.vercel.app/bookings`);
+  const res = await fetch("http://localhost:5000/bookings");
   const bookings = await res.json();
   return {
     props: {

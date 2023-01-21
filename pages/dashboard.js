@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`https://yogalex-server.vercel.app/bookedInfo?email=${user?.email}`)
+      .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);
@@ -53,27 +53,18 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto ">
+      <div className="max-w-[1440px] mx-auto">
         {admin && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
-            <Link href="/addTrainer" className="text-4xl">
+            <Link href="/manageTrainer" className="text-4xl">
               <div className="bg-primary p-3 flex gap-7 rounded-lg">
-                Add Trainer
-                <img
-                  className="w-12"
-                  src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
-                  alt=""
-                />
+                Manage Trainer
               </div>
             </Link>
             <Link href="/addBlog" className="text-4xl">
               <div className="bg-primary p-3 flex gap-7 rounded-lg">
-                Add Blog
-                <img
-                  className="w-12"
-                  src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
-                  alt=""
-                />
+                Manage Blog
+                
               </div>
             </Link>
           </div>

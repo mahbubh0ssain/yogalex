@@ -1,5 +1,7 @@
 import axios from "axios";
+import Link from "next/link";
 import React from "react";
+import Swal from "sweetalert2";
 
 const addTrainer = () => {
   const handleSubmit = async (e) => {
@@ -21,9 +23,8 @@ const addTrainer = () => {
     const data = await response.data;
     console.log(data);
     if (data.acknowledged) {
-      alert("TRainer added successfully");
+      Swal.fire("Trainer added successfully");
     }
-    console.log(data);
   };
 
   return (

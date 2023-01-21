@@ -1,6 +1,6 @@
 import axios from "axios";
 export const useToken = (email) => {
-  axios.post(`https://yogalex-server.vercel.app/jwt/${email}`).then((res) => {
+  axios.post(`http://localhost:5000/jwt/${email}`).then((res) => {
     localStorage.setItem("token", res.data);
   });
 };
