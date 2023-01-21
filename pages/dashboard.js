@@ -22,9 +22,8 @@ const Dashboard = () => {
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);
-        console.log("loading changed from the useEffect hook");
       });
-  }, [user?.email]);
+  }, [loading]);
 
   if (loading) {
     return <p className="text-black text-5xl text-center">Loading...</p>;
@@ -64,7 +63,6 @@ const Dashboard = () => {
             <Link href="/addBlog" className="text-4xl">
               <div className="bg-primary p-3 flex gap-7 rounded-lg">
                 Manage Blog
-                
               </div>
             </Link>
           </div>
@@ -129,7 +127,7 @@ const Dashboard = () => {
         </div>
       ) : (
         !admin && (
-          <h2 className="text-5xl flex items-center justify-center">
+          <h2 className="text-5xl my-3 flex items-center justify-center">
             You have no order
           </h2>
         )

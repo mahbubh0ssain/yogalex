@@ -14,7 +14,7 @@ const manageTrainer = () => {
   };
 
   return (
-    <div className="max-w-[1440px] mx-auto px-4">
+    <div className="max-w-[1440px] mx-auto px-4 min-h-[78vh]">
       <Link href="/addTrainer" className="text-4xl">
         <div className="bg-primary p-3 flex gap-7 rounded-lg">
           Add Trainer

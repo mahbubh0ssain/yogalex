@@ -1,13 +1,11 @@
 import axios from "axios";
 
 const Bookings = ({ info, setLoading, loading }) => {
-  const { bookingTime, date, slot, email, _id } = info;
+  const { bookingTime, date, slot, _id } = info;
   const handleDelete = () => {
-    axios
-      .delete(`${process.env.NEXT_PUBLIC_BASE_URL}/deletebooking?id=${_id}`)
-      .then((res) => {
-        setLoading(!loading);
-      });
+    axios.delete(`http://localhost:5000/deleteBooking?id=${_id}`).then(() => {
+      setLoading(!loading);
+    });
   };
   return (
     <tr className="max-w-[1440px] mx-auto">
