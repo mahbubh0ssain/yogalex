@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../pages/context/Authprovider";
 
 const Schedule = ({ data }) => {
@@ -22,7 +23,7 @@ const Schedule = ({ data }) => {
         if (res?.data?.data?.acknowledged) {
           form.reset();
           setSlot("");
-          alert("Successfully booked");
+          Swal.fire("Session booked successfully.");
         }
       });
   };
