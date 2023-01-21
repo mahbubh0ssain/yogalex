@@ -32,5 +32,5 @@ export const getTrainers = () => {
       setLoader(false);
     });
   }, [loader]);
-  return [trainers, setTrainers, loader];
+  return [trainers, setLoader, loader];
 };

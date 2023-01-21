@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useContext } from "react";
-import { AuthContext } from "../../pages/context/Authprovider";
 
 const UserTable = ({ info, setLoader, loader }) => {
   const { email, _id } = info;
