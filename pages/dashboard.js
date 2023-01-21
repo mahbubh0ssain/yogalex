@@ -15,7 +15,6 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
-
   useEffect(() => {
     axios
       .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
@@ -39,19 +38,18 @@ const Dashboard = () => {
         <div className="bg-primary rounded-lg py-6 max-w-[1440px] mx-auto px-4">
           <img
             className="rounded-full w-48 mx-auto"
-            src="https://i.ibb.co/G5gcTmk/IMG-20220729-233013-256x256.jpg"
+            src={user?.photoURL}
             alt=""
           />
           <h3 className="text-black text-4xl text-center">
             Welcome
-            <span className="text-cyan-500"> Md. Mahbub Hossain</span>
+            <span className="text-cyan-500"> {user?.displayName}</span>
           </h3>
           <h1 className="text-black text-4xl text-center mt-3">
             {user?.email}
           </h1>
         </div>
       </div>
-
       <div className="max-w-[1440px] mx-auto">
         {admin && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">

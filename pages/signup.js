@@ -7,22 +7,37 @@ import axios from "axios";
 
 const Signup = () => {
   const router = useRouter();
-  const { createUser, logInWithGoogle } = useContext(AuthContext);
-  const handleSignup = (e) => {
+  const { createUser, updateUserProfile, logInWithGoogle } =
+    useContext(AuthContext);
+  const handleSignup = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
+    const name = form.name.value;
     const password = form.password.value;
+
+    const image = e.target.image.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const res = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMAGEBB_API_KEY}`,
+      formData
+    );
+    const imgUrl = await res.data.data.url;
+
     createUser(email, password)
       .then(() => {
         axios.put(`http://localhost:5000/user/${email}`).then((res) => {
           if (res.data.result.acknowledged) {
+            updateUserProfile({ displayName: name, photoURL: imgUrl })
+              .then(() => {})
+              .catch(() => {});
             useToken(res?.user?.email);
             router.push("/");
           }
         });
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -48,10 +63,36 @@ const Signup = () => {
               Signup now!
             </h1>
             <div className="form-control">
+              <label className="label  pb-0">
+                <span className="label-text">Image</span>
+              </label>
+              <input
+                required
+                type="file"
+                name="image"
+                accept="image/*"
+                placeholder="example@gmail.com"
+                className="file-input file-input-bordered file-input-md w-full"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label pb-0">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                required
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                className="input input-bordered text-black"
+              />
+            </div>
+            <div className="form-control">
               <label className="label pb-0">
                 <span className="label-text">Email</span>
               </label>
               <input
+                required
                 type="email"
                 name="email"
                 placeholder="example@gmail.com"
@@ -63,6 +104,7 @@ const Signup = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                required
                 type="password"
                 name="password"
                 placeholder="*****"
