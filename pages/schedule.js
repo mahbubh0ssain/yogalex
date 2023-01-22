@@ -17,6 +17,7 @@ const Schedule = ({ data }) => {
     const number = form.number.value;
     const bookingTime = new Date();
     const bookingInfo = { date, slot, email, number, bookingTime };
+
     axios.post(`http://localhost:5000/booked`, bookingInfo).then((res) => {
       if (res?.data?.data?.acknowledged) {
         form.reset();
@@ -54,12 +55,19 @@ const Schedule = ({ data }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {data?.map((info) => (
           <div
+            disabled={info?.seats === 0}
             onClick={() => setSlot(info?.time)}
             key={info?._id}
             className="btn btn-primary text-3xl font-thin"
           >
-            {info?.time}
-            {/* <p className="text-black block">{info?.seats}</p> */}
+            <p className="mr-3">{info?.time}</p>
+            <p
+              className={`block text-sm ${
+                info?.seats === 0 ? "text-red-600" : "text-white"
+              } `}
+            >
+              ({info?.seats} {info?.seats === 1 ? "seat" : "seats"} available)
+            </p>
           </div>
         ))}
       </div>
