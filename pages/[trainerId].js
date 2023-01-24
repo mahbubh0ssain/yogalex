@@ -11,21 +11,22 @@ const TrainerDetails = ({ trainer }) => {
           <img src={trainer?.imgUrl} className="h-64 w-full" alt="Shoes" />
         </figure>
         <div className="card-body">
-          <span className="text-xl py-4 border-b-2 pb-0 ">{trainer?.name}</span>
-          <div className="flex">
-            <img
-              className="w-6 cursor-pointer mr-3"
-              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
-              alt=""
-            />
-            <img
-              className="w-6 cursor-pointer"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
-              alt=""
-            />
+          <div className="flex justify-between items-center border-b-2 pb-2">
+            <span className="text-xl pb-0 ">{trainer.name}</span>
+            <div className="flex">
+              <img
+                className="w-6  h-6 cursor-pointer mr-3"
+                src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                alt=""
+              />
+              <img
+                className="w-6 h-6  cursor-pointer"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
-
         <button onClick={goBack} className="btn btn-primary mx-4 mb-4">
           Back
         </button>
