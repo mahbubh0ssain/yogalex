@@ -7,12 +7,10 @@ const manageTrainer = () => {
   const [trainers, setLoader, loader] = getTrainers();
 
   const handleDelete = (_id) => {
-    axios
-      .delete(`https://yogalex-server.vercel.app/deleteTrainer?id=${_id}`)
-      .then(() => {
-        setLoader(!loader);
-        Swal.fire("Trainer deleted");
-      });
+    axios.delete(`http://localhost:5000/deleteTrainer?id=${_id}`).then(() => {
+      setLoader(!loader);
+      Swal.fire("Trainer deleted");
+    });
   };
 
   return (

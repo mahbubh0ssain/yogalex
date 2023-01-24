@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [users, loader, setLoader] = getUsers(user?.email);
   useEffect(() => {
     axios
-      .get(`https://yogalex-server.vercel.app/bookedInfo?email=${user?.email}`)
+      .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);

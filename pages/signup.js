@@ -28,18 +28,16 @@ const Signup = () => {
 
     createUser(email, password)
       .then(() => {
-        axios
-          .put(`https://yogalex-server.vercel.app/user/${email}`)
-          .then((res) => {
-            if (res.data.result.acknowledged) {
-              updateUserProfile({ displayName: name, photoURL: imgUrl })
-                .then(() => {})
-                .catch(() => {});
-              useToken(res?.user?.email);
-              router.push("/");
-              Swal.fire("Signup successful");
-            }
-          });
+        axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+          if (res.data.result.acknowledged) {
+            updateUserProfile({ displayName: name, photoURL: imgUrl })
+              .then(() => {})
+              .catch(() => {});
+            useToken(res?.user?.email);
+            router.push("/");
+            Swal.fire("Signup successful");
+          }
+        });
       })
       .catch((err) => {
         Swal.fire(err?.message);
