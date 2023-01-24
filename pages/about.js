@@ -15,7 +15,7 @@ const About = ({ trainers }) => {
 
 export default About;
 export const getServerSideProps = async () => {
-  const res = await fetch(`http://localhost:5000/trainer`);
+  const res = await fetch(`https://yogalex-server.vercel.app/trainer`);
   const trainers = await res.json();
   return {
     props: {

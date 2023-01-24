@@ -40,7 +40,9 @@ export default TrainerDetails;
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/trainer/${params?.trainerId}`);
+  const res = await fetch(
+    `https://yogalex-server.vercel.app/trainer/${params?.trainerId}`
+  );
   const trainer = await res.json();
   return {
     props: {
@@ -50,7 +52,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:5000/trainer`);
+  const res = await fetch(`https://yogalex-server.vercel.app/trainer`);
   const trainers = await res.json();
   const paths = trainers?.map((trainer) => {
     return {

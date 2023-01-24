@@ -4,9 +4,11 @@ import React, { useContext } from "react";
 const UserTable = ({ info, setLoader, loader }) => {
   const { email, _id } = info;
   const handleDelete = (_id) => {
-    axios.delete(`http://localhost:5000/deleteUser?id=${_id}`).then(() => {
-      setLoader(!loader);
-    });
+    axios
+      .delete(`https://yogalex-server.vercel.app/deleteUser?id=${_id}`)
+      .then(() => {
+        setLoader(!loader);
+      });
   };
   return (
     <tr className="max-w-[1440px] mx-auto">
