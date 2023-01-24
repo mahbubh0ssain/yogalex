@@ -57,7 +57,7 @@ export const getStaticPaths = async () => {
   const paths = trainers?.map((trainer) => {
     return {
       params: {
-        trainerId: `${trainer?._id}`,
+        trainer: `${trainer?._id}`,
       },
     };
   });
