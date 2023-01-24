@@ -12,10 +12,14 @@ const addTrainer = () => {
       formData
     );
     const imgUrl = await res.data.data.url;
-    const trainerInfo = { name: e.target.name.value, imgUrl };
+    const trainerInfo = {
+      name: e.target.name.value,
+      bio: e.target.bio.value,
+      imgUrl,
+    };
 
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/trainer`,
+      `http://localhost:5000/trainer`,
       trainerInfo
     );
     const data = await response.data;
@@ -54,6 +58,18 @@ const addTrainer = () => {
               type="text"
               name="name"
               placeholder="John Doe"
+              className="input input-bordered text-black"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label  pb-0">
+              <span className="label-text">Bio</span>
+            </label>
+            <textarea
+              required
+              type="text"
+              name="bio"
+              placeholder="Short bio of the trainer"
               className="input input-bordered text-black"
             />
           </div>
