@@ -29,6 +29,8 @@ const addTrainer = () => {
     }
   };
 
+  console.log("first");
+
   return (
     <div className="max-w-[768px] mx-auto min-h-[69.3vh] grid grid-cols-1 items-center justify-center">
       <div className="shadow-lg rounded-lg">
