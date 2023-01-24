@@ -4,6 +4,7 @@ import Router, { useRouter } from "next/router";
 import { AuthContext } from "../pages/context/Authprovider";
 import { useToken } from "../AuthToken/UseToken";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const router = useRouter();
@@ -34,11 +35,12 @@ const Signup = () => {
               .catch(() => {});
             useToken(res?.user?.email);
             router.push("/");
+            Swal.fire("Signup successful");
           }
         });
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire(err?.message);
       });
   };
 
@@ -46,12 +48,12 @@ const Signup = () => {
     logInWithGoogle()
       .then((res) => {
         if (res?.user?.email) {
+          Swal.fire("Login successful");
           Router.back();
         }
-        console.log(res.user);
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire(err?.message);
       });
   };
   return (

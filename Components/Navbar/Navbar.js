@@ -1,12 +1,16 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../../pages/context/Authprovider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const router = useRouter();
   const logOutUser = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        router.push("/");
+      })
       .catch(() => {});
   };
 

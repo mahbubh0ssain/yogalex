@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Router from "next/router";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { useToken } from "../AuthToken/UseToken";
 import { AuthContext } from "../pages/context/Authprovider";
 
@@ -17,10 +18,11 @@ const Login = () => {
           useToken(res?.user?.email);
           form.reset();
           Router.back();
+          Swal.fire("Login successful");
         }
       })
-      .then((err) => {
-        console.log(err);
+      .catch((err) => {
+        Swal.fire(err?.message);
       });
   };
 
@@ -32,7 +34,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire(err?.message);
       });
   };
 
