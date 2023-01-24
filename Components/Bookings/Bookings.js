@@ -3,9 +3,11 @@ import axios from "axios";
 const Bookings = ({ info, setLoading, loading }) => {
   const { bookingTime, date, slot, _id } = info;
   const handleDelete = () => {
-    axios.delete(`http://localhost:5000/deleteBooking?id=${_id}`).then(() => {
-      setLoading(!loading);
-    });
+    axios
+      .delete(`https://yogalex-server.vercel.app/deleteBooking?id=${_id}`)
+      .then(() => {
+        setLoading(!loading);
+      });
   };
   return (
     <tr className="max-w-[1440px] mx-auto">

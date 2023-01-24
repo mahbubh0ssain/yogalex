@@ -19,7 +19,7 @@ const addTrainer = () => {
     };
 
     const response = await axios.post(
-      `http://localhost:5000/trainer`,
+      `https://yogalex-server.vercel.app/trainer`,
       trainerInfo
     );
     const data = await response.data;
