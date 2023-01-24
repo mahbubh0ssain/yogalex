@@ -6,9 +6,19 @@ const Trainer = ({ trainer }) => {
           <img src={trainer?.imgUrl} className="h-64 w-full" alt="Shoes" />
         </figure>
         <div className="card-body">
-          <span className="text-xl badge badge-primary py-4 ">
-            {trainer.name}
-          </span>
+          <span className="text-xl py-4 ">{trainer.name}</span>
+          <div className="flex">
+            <img
+              className="w-6 cursor-pointer mr-3"
+              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+              alt=""
+            />
+            <img
+              className="w-6 cursor-pointer"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
+              alt=""
+            />
+          </div>
         </div>
         <button className="btn btn-primary mx-4 mb-4">Details</button>
       </div>
@@ -17,4 +27,3 @@ const Trainer = ({ trainer }) => {
 };
 
 export default Trainer;
-
