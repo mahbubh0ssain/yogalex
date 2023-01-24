@@ -40,11 +40,11 @@ const Membership = () => {
       <h1 className="font-thin text-6xl text-center text-black my-5">
         Membership Cards
       </h1>
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 mb-12">
-        {cardInfo.map((card, i) => (
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 mb-12  px-6">
+        {cardInfo?.map((card, i) => (
           <div
             key={i}
-            className="card w-96 bg-[#FFFFFF] text-black mx-auto text-center "
+            className="card w-full bg-[#FFFFFF] text-black mx-auto text-center mb-6 "
           >
             <div className="card-body">
               <h2 className="text-2xl">{card.type}</h2>
