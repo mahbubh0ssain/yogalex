@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Bookings from "../../Components/Bookings/Bookings";
 import { getRole, getUsers } from "../../Components/getInfo/getInfo";
+import { Loader } from "../../Components/Spinner/Spinner";
 import UserTable from "../../Components/UserTable/UserTable";
 import { AuthContext } from "../context/Authprovider";
 
@@ -25,7 +26,7 @@ const Dashboard = () => {
   }, [loading]);
 
   if (loading) {
-    return <p className="text-black text-5xl text-center">Loading...</p>;
+    return <Loader />;
   }
 
   if (!user) {
@@ -35,7 +36,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-[69vh]">
       <div className="mx-4">
-        <div className="bg-primary rounded-lg py-6 max-w-[1440px] mx-auto px-4">
+        <div className="bg-[#E2B9D4] rounded-lg py-6 max-w-[1440px] mx-auto px-4">
           <img
             className="rounded-full w-48 mx-auto"
             src={user?.photoURL}
@@ -54,12 +55,12 @@ const Dashboard = () => {
         {admin && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
             <Link href="/dashboard/managetrainer" className="text-4xl">
-              <div className="bg-primary p-3 flex gap-7 rounded-lg">
+              <div className="bg-[#E2B9D4] p-3 flex gap-7 rounded-lg">
                 Manage Trainer
               </div>
             </Link>
-            <Link href="/dashboard/addblog" className="text-4xl">
-              <div className="bg-primary p-3 flex gap-7 rounded-lg">
+            <Link href="/dashboard/addblog" className="text-4xl ">
+              <div className="bg-[#E2B9D4] p-3 flex gap-7 rounded-lg">
                 Manage Blog
               </div>
             </Link>

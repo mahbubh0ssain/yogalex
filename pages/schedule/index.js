@@ -58,7 +58,7 @@ const Schedule = ({ data }) => {
             disabled={info?.seats === 0}
             onClick={() => setSlot(info?.time)}
             key={info?._id}
-            className="btn btn-primary text-3xl font-thin"
+            className="btn bg-[#E2B9D4] border-0 text-3xl font-thin"
           >
             <p className="mr-3">{info?.time}</p>
             <p
@@ -129,7 +129,7 @@ const Schedule = ({ data }) => {
           <input
             disabled={!slot}
             type="submit"
-            className="btn btn-primary"
+            className="btn bg-[#E2B9D4] border-0"
             value="Book Now"
           ></input>
         </div>

@@ -76,7 +76,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <input
                 type="submit"
-                className="btn btn-primary"
+                className="btn bg-[#E2B9D4] border-0"
                 value="Login"
               ></input>
             </div>
@@ -90,7 +90,10 @@ const Login = () => {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="divider">OR</div>
             <div className="grid card rounded-box place-items-center">
-              <div onClick={continueWithGoogle} className="btn mb-5">
+              <div
+                onClick={continueWithGoogle}
+                className="btn bg-[#E2B9D4] border-0 mb-5"
+              >
                 <img
                   className="w-6 mr-3"
                   src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"

@@ -27,7 +27,9 @@ const Trainer = ({ trainer }) => {
           </div>
         </div>
         <Link href={`/abouttrainer/${trainer?._id}`}>
-          <button className="btn btn-primary w-full mt-4">Details</button>
+          <button className="btn bg-[#E2B9D4] border-0 w-full mt-4">
+            Details
+          </button>
         </Link>
       </div>
     </div>

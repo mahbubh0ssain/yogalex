@@ -28,7 +28,10 @@ const TrainerDetails = ({ trainer }) => {
           </div>
           <p>{trainer?.bio}</p>
         </div>
-        <button onClick={goBack} className="btn btn-primary mx-4 mb-4">
+        <button
+          onClick={goBack}
+          className="btn bg-[#E2B9D4] border-0 mx-4 mb-4"
+        >
           Back
         </button>
       </div>

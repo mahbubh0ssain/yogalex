@@ -78,7 +78,7 @@ const addTrainer = () => {
           <div className="form-control mt-6">
             <input
               type="submit"
-              className="btn btn-primary"
+              className="btn bg-[#E2B9D4] border-0"
               value="Submit"
             ></input>
           </div>
