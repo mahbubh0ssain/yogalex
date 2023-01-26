@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { Loader } from "../../Components/Spinner/Spinner";
 import { AuthContext } from "../context/Authprovider";
 
 const Schedule = ({ data }) => {
@@ -23,6 +24,8 @@ const Schedule = ({ data }) => {
         form.reset();
         setSlot("");
         Swal.fire("Session booked successfully.");
+      } else {
+        Swal.fire("Something went wrong");
       }
     });
   };
@@ -36,7 +39,7 @@ const Schedule = ({ data }) => {
   }, []);
 
   if (!data) {
-    return <h2 className="text-7xl text-black">Loading...</h2>;
+    return <Loader />;
   }
 
   return (
