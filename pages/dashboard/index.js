@@ -1,12 +1,12 @@
 import axios from "axios";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import Bookings from "../../Components/Bookings/Bookings";
 import { getRole, getUsers } from "../../Components/getInfo/getInfo";
 import { Loader } from "../../Components/Spinner/Spinner";
-import UserTable from "../../Components/UserTable/UserTable";
 import { AuthContext } from "../context/Authprovider";
+import AdminManager from "./adminManager";
+import Users from "./adminUser";
+import UserBooking from "./bookings";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -51,46 +51,12 @@ const Dashboard = () => {
           </h1>
         </div>
       </div>
-      <div className="max-w-[1440px] mx-auto">
-        {admin && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
-            <Link href="/dashboard/managetrainer" className="text-4xl">
-              <div className="bg-[#E2B9D4] p-3 flex gap-7 rounded-lg">
-                Manage Trainer
-              </div>
-            </Link>
-            <Link href="/dashboard/addblog" className="text-4xl ">
-              <div className="bg-[#E2B9D4] p-3 flex gap-7 rounded-lg">
-                Manage Blog
-              </div>
-            </Link>
-          </div>
-        )}
-      </div>
+      {/* all users for admin only */}
+      <div className="max-w-[1440px] mx-auto">{admin && <AdminManager />}</div>
 
+      {/* users for admin */}
       {admin && users?.length ? (
-        <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
-          <div className="overflow-x-auto text-black mt-5">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th>User Email</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users?.map((info) => (
-                  <UserTable
-                    key={info._id}
-                    setLoader={setLoader}
-                    loader={loader}
-                    info={info}
-                  ></UserTable>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <Users users={users} setLoader={setLoader} loader={loader} />
       ) : (
         !users?.data?.length(
           <h2 className="text-5xl flex items-center justify-center">
@@ -98,32 +64,13 @@ const Dashboard = () => {
           </h2>
         )
       )}
-
+      {/* bookings for user */}
       {!admin && booking?.length ? (
-        <div className="max-w-[1440px] mx-auto px-4 min-h-[69.4vh]">
-          <div className="overflow-x-auto text-black mt-5">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th>Time of Booking</th>
-                  <th>Slot</th>
-                  <th>Date</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {booking?.map((info) => (
-                  <Bookings
-                    key={info._id}
-                    setLoading={setLoading}
-                    loading={loading}
-                    info={info}
-                  ></Bookings>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <UserBooking
+          booking={booking}
+          loading={loading}
+          setLoading={setLoading}
+        />
       ) : (
         !admin && (
           <h2 className="text-5xl my-3 flex items-center justify-center">
