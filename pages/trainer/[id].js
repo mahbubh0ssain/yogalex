@@ -40,9 +40,9 @@ export default TrainerDetails;
 
 export const getServerSideProps = async (context) => {
   const { id } = context.query;
-  const res = await fetch(`https://yogalex-server.vercel.app/trainer/${id}`);
+  console.log(id);
+  const res = await fetch(`http://localhost:5000/trainer/${id}`);
   const trainer = await res.json();
-  console.log(trainer);
   return {
     props: {
       trainer,

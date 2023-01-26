@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Classes from "../Components/Classes/Classes";
 import Counting from "../Components/Counting/Counting";
 import Header from "../Components/Header/Header";

@@ -1,23 +1,21 @@
 import axios from "axios";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import { getTrainers } from "../Components/getInfo/getInfo";
+import { getTrainers } from "../../Components/getInfo/getInfo";
 
 const manageTrainer = () => {
   const [trainers, setLoader, loader] = getTrainers();
 
   const handleDelete = (_id) => {
-    axios
-      .delete(`https://yogalex-server.vercel.app/deleteTrainer?id=${_id}`)
-      .then(() => {
-        setLoader(!loader);
-        Swal.fire("Trainer deleted");
-      });
+    axios.delete(`http://localhost:5000/deleteTrainer?id=${_id}`).then(() => {
+      setLoader(!loader);
+      Swal.fire("Trainer deleted");
+    });
   };
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 min-h-[78vh]">
-      <Link href="/addTrainer" className="text-4xl">
+      <Link href="/dashboard/addtrainer" className="text-4xl">
         <div className="bg-primary p-3 flex gap-7 rounded-lg">
           Add Trainer
           <img

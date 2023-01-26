@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useContext } from "react";
 import Router, { useRouter } from "next/router";
-import { AuthContext } from "../pages/context/Authprovider";
-import { useToken } from "../AuthToken/UseToken";
+import { AuthContext } from "../context/Authprovider";
+import { useToken } from "../../AuthToken/UseToken";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -28,18 +28,16 @@ const Signup = () => {
 
     createUser(email, password)
       .then(() => {
-        axios
-          .put(`https://yogalex-server.vercel.app/user/${email}`)
-          .then((res) => {
-            if (res.data.result.acknowledged) {
-              updateUserProfile({ displayName: name, photoURL: imgUrl })
-                .then(() => {})
-                .catch(() => {});
-              useToken(res?.user?.email);
-              router.push("/");
-              Swal.fire("Signup successful");
-            }
-          });
+        axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+          if (res.data.result.acknowledged) {
+            updateUserProfile({ displayName: name, photoURL: imgUrl })
+              .then(() => {})
+              .catch(() => {});
+            useToken(res?.user?.email);
+            router.push("/");
+            Swal.fire("Signup successful");
+          }
+        });
       })
       .catch((err) => {
         Swal.fire(err?.message);

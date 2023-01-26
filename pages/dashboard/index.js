@@ -2,10 +2,10 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import Bookings from "../Components/Bookings/Bookings";
-import { getRole, getUsers } from "../Components/getInfo/getInfo";
-import UserTable from "../Components/UserTable/UserTable";
-import { AuthContext } from "../pages/context/Authprovider";
+import Bookings from "../../Components/Bookings/Bookings";
+import { getRole, getUsers } from "../../Components/getInfo/getInfo";
+import UserTable from "../../Components/UserTable/UserTable";
+import { AuthContext } from "../context/Authprovider";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [users, loader, setLoader] = getUsers(user?.email);
   useEffect(() => {
     axios
-      .get(`https://yogalex-server.vercel.app/bookedInfo?email=${user?.email}`)
+      .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);
@@ -53,12 +53,12 @@ const Dashboard = () => {
       <div className="max-w-[1440px] mx-auto">
         {admin && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
-            <Link href="/manageTrainer" className="text-4xl">
+            <Link href="/dashboard/managetrainer" className="text-4xl">
               <div className="bg-primary p-3 flex gap-7 rounded-lg">
                 Manage Trainer
               </div>
             </Link>
-            <Link href="/addBlog" className="text-4xl">
+            <Link href="/dashboard/addblog" className="text-4xl">
               <div className="bg-primary p-3 flex gap-7 rounded-lg">
                 Manage Blog
               </div>
