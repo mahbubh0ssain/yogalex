@@ -39,8 +39,7 @@ const TrainerDetails = ({ trainer }) => {
 export default TrainerDetails;
 
 export const getServerSideProps = async (context) => {
-  const { id } = context.query;
-  console.log(id);
+  const { id } = context?.query;
   const res = await fetch(`http://localhost:5000/trainer/${id}`);
   const trainer = await res.json();
   return {
