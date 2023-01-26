@@ -1,8 +1,8 @@
+import axios from "axios";
 import Link from "next/link";
 import Router from "next/router";
 import { useContext } from "react";
 import Swal from "sweetalert2";
-import { useToken } from "../../AuthToken/UseToken";
 import { AuthContext } from "../context/Authprovider";
 
 const Login = () => {
@@ -15,10 +15,14 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         if (res?.user?.email) {
-          useToken(res?.user?.email);
-          form.reset();
-          Router.back();
-          Swal.fire("Login successful");
+          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+            if (res?.data?.result?.acknowledged) {
+              localStorage.setItem("token", res?.data?.token);
+              form.reset();
+              Router.back();
+              Swal.fire("Signup successful");
+            }
+          });
         }
       })
       .catch((err) => {
@@ -30,7 +34,14 @@ const Login = () => {
     logInWithGoogle()
       .then((res) => {
         if (res?.user?.email) {
-          Router.back();
+          const email = res?.user?.email;
+          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+            if (res?.data?.result?.acknowledged) {
+              localStorage.setItem("token", res?.data?.token);
+              Router.back();
+              Swal.fire("Signup successful");
+            }
+          });
         }
       })
       .catch((err) => {

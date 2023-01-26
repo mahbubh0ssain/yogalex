@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useContext } from "react";
 import Router, { useRouter } from "next/router";
 import { AuthContext } from "../context/Authprovider";
-import { useToken } from "../../AuthToken/UseToken";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -24,7 +23,7 @@ const Signup = () => {
       `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMAGEBB_API_KEY}`,
       formData
     );
-    const imgUrl = await res.data.data.url;
+    const imgUrl = await res?.data?.data?.url;
 
     createUser(email, password)
       .then(() => {
@@ -33,7 +32,7 @@ const Signup = () => {
             updateUserProfile({ displayName: name, photoURL: imgUrl })
               .then(() => {})
               .catch(() => {});
-            useToken(res?.user?.email);
+            localStorage.setItem("token", res?.data?.token);
             router.push("/");
             Swal.fire("Signup successful");
           }
@@ -48,8 +47,13 @@ const Signup = () => {
     logInWithGoogle()
       .then((res) => {
         if (res?.user?.email) {
-          Swal.fire("Login successful");
-          Router.back();
+          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+            if (res.data.result.acknowledged) {
+              localStorage.setItem("token", res?.data?.token);
+              Swal.fire("Signup successful");
+              Router.back();
+            }
+          });
         }
       })
       .catch((err) => {
