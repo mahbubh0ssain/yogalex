@@ -49,7 +49,7 @@ const Schedule = ({ data }) => {
       </h1>
       <div className="mb-4">
         <img
-          className="rounded-lg h-[70vh] w-full"
+          className="rounded-lg h-[70vh]  max-w-[992px] mx-auto"
           src="https://i.ibb.co/Mp3RJ5v/1280-meditate-yoga.jpg"
           alt=""
         />

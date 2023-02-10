@@ -9,7 +9,7 @@ const manageTrainer = () => {
   const handleDelete = (_id) => {
     axios.delete(`http://localhost:5000/deleteTrainer?id=${_id}`).then(() => {
       setLoader(!loader);
-      Swal.fire("Trainer deleted");
+      Swal.fire("Trainer deleted successfully");
     });
   };
 
@@ -19,7 +19,7 @@ const manageTrainer = () => {
         <div className="bg-[#E2B9D4] p-3 flex gap-7 rounded-lg">
           Add Trainer
           <img
-            className="w-12"
+            className="ml-auto w-12"
             src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3197020/plus-circle-icon-md.png"
             alt=""
           />
@@ -38,8 +38,8 @@ const manageTrainer = () => {
           <tbody>
             {trainers?.map((trainer) => {
               return (
-                <tr key={trainer?._id} className="max-w-[1440px] mx-auto">
-                  <td>{trainer?.name}</td>
+                <tr key={trainer?._id} className="max-w-[1440px] mx-auto ">
+                  <td >{trainer?.name}</td>
                   <td>{trainer?._id}</td>
                   <td>
                     <button

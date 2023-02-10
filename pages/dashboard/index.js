@@ -17,6 +17,7 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
+  
   useEffect(() => {
     axios
       .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)

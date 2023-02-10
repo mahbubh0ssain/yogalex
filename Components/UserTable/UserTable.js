@@ -9,7 +9,7 @@ const UserTable = ({ info, setLoader, loader }) => {
     });
   };
   return (
-    <tr className="max-w-[1440px] mx-auto">
+    <tr className="max-w-[1440px] mx-auto ">
       <td>{email}</td>
       <td>
         <button

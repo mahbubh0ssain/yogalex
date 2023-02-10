@@ -24,10 +24,11 @@ const Signup = () => {
       formData
     );
     const imgUrl = await res?.data?.data?.url;
+    const user = { name, imgUrl };
 
     createUser(email, password)
       .then(() => {
-        axios.put(`http://localhost:5000/user/${email}`).then((res) => {
+        axios.put(`http://localhost:5000/user/${email}`, user).then((res) => {
           if (res.data.result.acknowledged) {
             updateUserProfile({ displayName: name, photoURL: imgUrl })
               .then(() => {})

@@ -13,6 +13,7 @@ export const getRole = (email) => {
 
 export const getUsers = (email) => {
   const [users, setUsers] = useState({});
+  console.log(users);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     axios.get(`http://localhost:5000/get-users/${email}`).then((res) => {
