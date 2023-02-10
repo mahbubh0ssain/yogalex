@@ -15,14 +15,16 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         if (res?.user?.email) {
-          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
-            if (res?.data?.result?.acknowledged) {
-              localStorage.setItem("token", res?.data?.token);
-              form.reset();
-              Router.back();
-              Swal.fire("Signup successful");
-            }
-          });
+          axios
+            .put(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/${email}`)
+            .then((res) => {
+              if (res?.data?.result?.acknowledged) {
+                localStorage.setItem("token", res?.data?.token);
+                form.reset();
+                Router.back();
+                Swal.fire("Signup successful");
+              }
+            });
         }
       })
       .catch((err) => {
@@ -35,13 +37,15 @@ const Login = () => {
       .then((res) => {
         if (res?.user?.email) {
           const email = res?.user?.email;
-          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
-            if (res?.data?.result?.acknowledged) {
-              localStorage.setItem("token", res?.data?.token);
-              Router.back();
-              Swal.fire("Signup successful");
-            }
-          });
+          axios
+            .put(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/${email}`)
+            .then((res) => {
+              if (res?.data?.result?.acknowledged) {
+                localStorage.setItem("token", res?.data?.token);
+                Router.back();
+                Swal.fire("Signup successful");
+              }
+            });
         }
       })
       .catch((err) => {

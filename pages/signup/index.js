@@ -28,16 +28,18 @@ const Signup = () => {
 
     createUser(email, password)
       .then(() => {
-        axios.put(`http://localhost:5000/user/${email}`, user).then((res) => {
-          if (res.data.result.acknowledged) {
-            updateUserProfile({ displayName: name, photoURL: imgUrl })
-              .then(() => {})
-              .catch(() => {});
-            localStorage.setItem("token", res?.data?.token);
-            router.push("/");
-            Swal.fire("Signup successful");
-          }
-        });
+        axios
+          .put(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/${email}`, user)
+          .then((res) => {
+            if (res.data.result.acknowledged) {
+              updateUserProfile({ displayName: name, photoURL: imgUrl })
+                .then(() => {})
+                .catch(() => {});
+              localStorage.setItem("token", res?.data?.token);
+              router.push("/");
+              Swal.fire("Signup successful");
+            }
+          });
       })
       .catch((err) => {
         Swal.fire(err?.message);
@@ -48,13 +50,15 @@ const Signup = () => {
     logInWithGoogle()
       .then((res) => {
         if (res?.user?.email) {
-          axios.put(`http://localhost:5000/user/${email}`).then((res) => {
-            if (res.data.result.acknowledged) {
-              localStorage.setItem("token", res?.data?.token);
-              Swal.fire("Signup successful");
-              Router.back();
-            }
-          });
+          axios
+            .put(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/${email}`)
+            .then((res) => {
+              if (res.data.result.acknowledged) {
+                localStorage.setItem("token", res?.data?.token);
+                Swal.fire("Signup successful");
+                Router.back();
+              }
+            });
         }
       })
       .catch((err) => {

@@ -19,7 +19,7 @@ const addTrainer = () => {
     };
 
     const response = await axios.post(
-      `http://localhost:5000/trainer`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/trainer`,
       trainerInfo
     );
     const data = await response.data;

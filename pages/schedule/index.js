@@ -19,28 +19,27 @@ const Schedule = ({ data }) => {
     const bookingTime = new Date();
     const bookingInfo = { date, slot, email, number, bookingTime };
 
-    axios.post(`http://localhost:5000/booked`, bookingInfo).then((res) => {
-      if (res?.data?.data?.acknowledged) {
-        form.reset();
-        setSlot("");
-        Swal.fire("Session booked successfully.");
-      } else {
-        Swal.fire("Something went wrong");
-      }
-    });
+    axios
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/booked`, bookingInfo)
+      .then((res) => {
+        if (res?.data?.data?.acknowledged) {
+          form.reset();
+          setSlot("");
+          Swal.fire("Session booked successfully.");
+        } else {
+          Swal.fire("Something went wrong");
+        }
+      });
   };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (!user) {
-        router.push("/login");
-      }
-    }
-  }, []);
 
   if (!data) {
     return <Loader />;
   }
+  useEffect(() => {
+    if (!window.localStorage.getItem("token")) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <div className="max-w-[1440px] mx-auto px-4">
@@ -144,7 +143,7 @@ const Schedule = ({ data }) => {
 export default Schedule;
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:5000/bookings");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`);
   const bookings = await res.json();
   return {
     props: {

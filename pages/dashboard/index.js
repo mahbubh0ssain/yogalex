@@ -17,10 +17,12 @@ const Dashboard = () => {
 
   const admin = getRole(user?.email);
   const [users, loader, setLoader] = getUsers(user?.email);
-  
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bookedInfo?email=${user?.email}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/bookedInfo?email=${user?.email}`
+      )
       .then((res) => {
         setBooking(res?.data);
         setLoading(false);
@@ -31,7 +33,7 @@ const Dashboard = () => {
     return <Loader />;
   }
 
-  if (!user) {
+  if (!window.localStorage.getItem("token")) {
     router.push("/login");
   }
 

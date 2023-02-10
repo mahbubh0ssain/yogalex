@@ -7,10 +7,12 @@ const manageTrainer = () => {
   const [trainers, setLoader, loader] = getTrainers();
 
   const handleDelete = (_id) => {
-    axios.delete(`http://localhost:5000/deleteTrainer?id=${_id}`).then(() => {
-      setLoader(!loader);
-      Swal.fire("Trainer deleted successfully");
-    });
+    axios
+      .delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/deleteTrainer?id=${_id}`)
+      .then(() => {
+        setLoader(!loader);
+        Swal.fire("Trainer deleted successfully");
+      });
   };
 
   return (
@@ -39,7 +41,7 @@ const manageTrainer = () => {
             {trainers?.map((trainer) => {
               return (
                 <tr key={trainer?._id} className="max-w-[1440px] mx-auto ">
-                  <td >{trainer?.name}</td>
+                  <td>{trainer?.name}</td>
                   <td>{trainer?._id}</td>
                   <td>
                     <button
